@@ -1,0 +1,43 @@
+.is-mt-10 {
+    margin-top: 10px;
+}
+.is-mt-5 {
+    margin-top: 5px;
+}
+.is-mr-5 {
+    margin-right: 5px;
+}
+
+.is-ml-3 {
+    margin-left: 3px;
+}
+
+.is-pb-20 {
+    padding-bottom: 15px !important;
+}
+
+.is-m-5 {
+    margin: 5px;
+}
+
+.is-anti-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.is-hover {
+    cursor: pointer;
+}
+.is-hover:hover, .is-hover:focus {
+    border: none;
+    color: grey !important;
+    font-size: 3.3rem;
+    cursor: pointer;
+}
+.is-anti-button:hover, .is-anti-button:focus {
+    border: none;
+    color: grey !important;
+    font-size: 1rem;
+    cursor: pointer;
+}
