@@ -4,7 +4,7 @@ let Todo = require('../models/models.todo')
 
 
 router.route('/getAll').get((req, res) => {
-    Todo.find()
+    Todo.find().sort({date: -1})
     .then(todo => {
         res.json({
             status: true,
@@ -46,6 +46,7 @@ router.route('/add').post((req, res) => {
     const newTodo = new Todo({
         name: req.body.name,
         message: req.body.message,
+        title: req.body.title,
         date: new Date(req.body.date)
     });
     newTodo.save()
@@ -74,14 +75,18 @@ router.route('/update').post((req, res) => {
 
     Todo.findByIdAndUpdate(req.body.id)
     .then(todo => {
+        console.log(req.body)
         todo.name = req.body.name
+        todo.title = req.body.title
         todo.message = req.body.message
         todo.date = new Date(req.body.date)
         todo.save()
         .then(todo => {
+            console.log(todo)
             res.json({
                 status: true,
-                data: todo
+                data: todo,
+                message: 'Todo has been updated'
             })
         })
         .catch(err => res.status(400).json('Error: ' + err))
@@ -103,6 +108,7 @@ router.route('/delete').post((req, res) => {
         todo.delete()
         .then(() =>  res.json({
             status: true,
+            id:req.body.id
         }))
         .catch(err => res.status(400).json('Error: ' + err))
     })
